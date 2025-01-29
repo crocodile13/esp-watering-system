@@ -122,8 +122,7 @@ void handleRoot() {
 //  lastWatering = String(remainingHours) + " hours, " + String(remainingMinutes) + " minutes, and " + String(remainingSeconds) + " seconds ago.";
 
   // Création du HTML
-  String html = "<html><head><meta charset=\"UTF-8\"><title>Esp8266 watering system</title>";
-  html += "<style>";
+  String html = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Esp8266 watering system</title>";  html += "<style>";
   html += "body { background-color: #1d1d1d; color: #b4ff9f; font-family: Arial, sans-serif; padding: 20px; margin: 0; }";
   html += "h1 { color: #00ff00; text-align: center; font-size: 36px; }";
   html += "p { font-size: 18px; line-height: 1.6; margin: 10px 0; }";

@@ -1,15 +1,21 @@
 # Automatic Plant Watering System
 
-This project is designed to create an automatic watering system for plants, controlled via an ESP8266. It manages watering cycles and monitors the current watering status, including the time remaining until the next watering. The system can be monitored remotely through a web interface.
+ Minimalist program for an automatic plant watering system, controlled via an ESP32/ESP8266. The system can be monitored remotely through a web interface.
 
 ![Watering System](web_interface_image.png)
 
 ## Features
 
 - **Automatic Watering**: The system waters the plants at regular intervals.
-- **Real-Time Monitoring**: The web interface displays the remaining time until the next watering and the time elapsed since the last watering.
-- **Watering Cycles**: The total number of completed watering cycles is tracked and displayed on the web page.
-- **Web Interface**: Access the system through a browser to view and monitor the current status.
+- **Pseudo Real-Time Monitoring**: The web interface displays the remaining time until the next watering, the time elapsed since the last watering and total number of completed watering cycles. The counters on the web interface are updated using a mix of local management and server requests to minimize network dependency for monitoring.
+- **Resilience to restarts/power outages**: The internal flash is used to periodically save the system's state, allowing it to restore the state after a restart.
+- **Fully configurable**: Almost everything is configurable through macros.
+
+## Dependencies
+- ESP8266WiFi.h
+- ESP8266WebServer.h
+- LittleFS.h
+- stdlib.h
 
 ## Installation
 

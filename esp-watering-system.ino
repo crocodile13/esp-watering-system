@@ -17,8 +17,8 @@
 // Sauf erreur de ma part la flash de mon esp8266(1Mo) contiens 256 secteur. Donc ca va.
 #define SAVE_TIME_DELAY 360 * 1000
 
-#define RESET_FLASH //pour reset la flash. Vous pouvez bien sur utiliser une entrée numerique pour executer cette fonction via un bouton par exemple.
-#define SERIAL_DEBUG //pour envoyer des logs sur port serie
+//#define RESET_FLASH //pour reset la flash. Vous pouvez bien sur utiliser une entrée numerique pour executer cette fonction via un bouton par exemple.
+//#define SERIAL_DEBUG //pour envoyer des logs sur port serie
 
 #define BAUDS 9600 //interet que si SERIAL_DEBUG est definit...
 

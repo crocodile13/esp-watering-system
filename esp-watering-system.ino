@@ -7,7 +7,7 @@
 
 #define WATERING_DELAY (unsigned long)(12 * 3600000UL) // 12 heures en millisecondes 0.05 pour 3mn
 #define MICRO_REPEAT 3             // Nombre de répétitions d'arrosage par cycle
-#define MICRO_DELAY 4000           // Nombre de ms d'arrosage pour chaque repetition du cycle
+#define MICRO_DELAY 3000           // Nombre de ms d'arrosage pour chaque repetition du cycle
 
 #define LOOP_DELAY 1000            // En ms
 
@@ -193,6 +193,7 @@ void handleRoot() {
   html += "setInterval(refreshFromServer, " + String(REFRESH_TIME_HTML_CLIENT) + ");";
   
   html += "</script>";
+  
   html += "</head><body>";
   html += "<div class=\"container\">";
   html += "<h1>🐱 Esp8266 watering system 🐱</h1>";

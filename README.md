@@ -1,6 +1,6 @@
 # Automatic Plant Watering System
 
- Minimalist program for an automatic plant watering system, controlled via an ESP32/ESP8266. The system can be monitored remotely through a web interface.
+Resilient and minimalist automatic plant watering system using ESP32/ESP8266, with remote monitoring via a web interface.
 
 ![Watering System](web_interface_image.png)
 

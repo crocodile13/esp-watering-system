@@ -13,7 +13,7 @@
 
 // !!! A LIRE !!! La flash de esp8266 est donnée pour un max de 100 000 réecritures: survie de 1 mois si 2 ecritures toutes les 30s par exemple.
 // Certes c'est pas la flash entière mais je vais tuer 1 secteur par mois a ce rythme.
-// Je definis donc a 360, ce qui donne un enregistrement toute les 6 minutes, mais surtout, qui correspond a une usure de 1 secteur tout les ans.
+// Je definis donc a 360 au minimum, ce qui donne un enregistrement toute les 6 minutes, mais surtout, qui correspond a une usure de 1 secteur tout les ans.
 // Sauf erreur de ma part la flash de mon esp8266(1Mo) contiens 256 secteur. Donc ca va.
 #define SAVE_TIME_DELAY 360 * 1000
 
@@ -201,9 +201,28 @@ void handleRoot() {
   html += "<p id=\"nextWatering\">Next watering in: " + nextWatering + "</p>";
   html += "<p id=\"lastWatering\">Last watering was: " + lastWatering + "</p>";
   html += "</div>";
+  html += "<div class=\"container\">";
+  html += "<h1> Infos </h1>";
+  html += "<p id=\"pinSolenoidValveNC\">Pin valve NC: " + LED_PIN + "</p>";
+  html += "<p id=\"modeWatering\">Watering mode: " + MICRO_DELAY/1000 + "s open / " + MICRO_DELAY/1000 + "s close, with " + MICRO_REPEAT + " repetition for each watering cycle.</p>";
+  html += "<p id=\"wateringDelay\">Delay between each watering: " + WATERING_DELAY/3600000 + "h </p>";
+  html += "<p id=\"saveDelay\">Save status to flash delay: " + SAVE_TIME_DELAY/60000 + "min </p>";
+#ifdef RESET_FLASH
+  html += "<p id=\"resetFlash\">Reset when reboot: on </p>";
+#endif
+#ifndef RESET_FLASH
+  html += "<p id=\"resetFlash\">Reset when reboot: off </p>";
+#endif
+#ifdef SERIAL_DEBUG
+  html += "<p id=\"serialDebug\">Serial debug: on </p>";
+#endif
+#ifndef SERIAL_DEBUG
+  html += "<p id=\"serialDebug\">Serial debug: off </p>";
+#endif
+  html += "</div>";
   html += "<footer>ESP8266 Watering System | Created with ❤️</footer>";
   html += "</body></html>";
-
+  
   server.send(200, "text/html", html);
 }
 

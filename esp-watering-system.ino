@@ -206,10 +206,10 @@ void handleRoot() {
   html += "</div>";
   html += "<div class=\"container-info\">";
   html += "<h1>System Info</h1>";
-  html += "<p id=\"pinSolenoidValveNC\">Pin valve NC: " + LED_PIN + "</p>";
-  html += "<p id=\"modeWatering\">Watering mode: " + MICRO_DELAY / 1000 + "s open / " + MICRO_DELAY / 1000 + "s close, with " + MICRO_REPEAT + " repetition(s) per cycle.</p>";
-  html += "<p id=\"wateringDelay\">Delay between each watering: " + WATERING_DELAY / 3600000 + "h</p>";
-  html += "<p id=\"saveDelay\">Save status to flash delay: " + SAVE_TIME_DELAY / 60000 + "min</p>";
+  html += "<p id=\"pinSolenoidValveNC\">Pin valve NC: " + String(LED_PIN) + "</p>";
+  html += "<p id=\"modeWatering\">Watering mode: " + String(MICRO_DELAY / 1000) + "s open / " + String(MICRO_DELAY / 1000) + "s close, with " + String(MICRO_REPEAT) + " repetition(s) per cycle.</p>";
+  html += "<p id=\"wateringDelay\">Delay between each watering: " + String(WATERING_DELAY / 3600000) + "h</p>";
+  html += "<p id=\"saveDelay\">Save status to flash delay: " + String(SAVE_TIME_DELAY / 60000) + "min</p>";
   #ifdef RESET_FLASH
   html += "<p id=\"resetFlash\">Reset when reboot: on</p>";
   #else

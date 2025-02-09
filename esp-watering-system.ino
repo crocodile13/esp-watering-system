@@ -122,13 +122,17 @@ void handleRoot() {
 //  lastWatering = String(remainingHours) + " hours, " + String(remainingMinutes) + " minutes, and " + String(remainingSeconds) + " seconds ago.";
 
   // Création du HTML
-  String html = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Esp8266 watering system</title>";  html += "<style>";
+  String html = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>ESP8266 Watering System</title>";
+  html += "<style>";
   html += "body { background-color: #1d1d1d; color: #b4ff9f; font-family: Arial, sans-serif; padding: 20px; margin: 0; }";
   html += "h1 { color: #00ff00; text-align: center; font-size: 36px; }";
   html += "p { font-size: 18px; line-height: 1.6; margin: 10px 0; }";
-  html += "div.container { max-width: 800px; margin: 0 auto; background-color: #262626; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); }";
+  html += "div.container-main { max-width: 800px; margin: 0 auto; background-color: #262626; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); }";
+  html += "div.container-info { max-width: 600px; margin: 20px auto; background-color: #333; padding: 15px; border-radius: 8px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); font-size: 16px; }";
   html += "footer { text-align: center; margin-top: 20px; font-size: 14px; color: #888; }";
   html += "</style>";
+  html += "</head><body>";
+  
   html += "<script>";
   
   // Variables locales
@@ -194,31 +198,28 @@ void handleRoot() {
   
   html += "</script>";
   
-  html += "</head><body>";
-  html += "<div class=\"container\">";
-  html += "<h1>🐱 Esp8266 watering system 🐱</h1>";
+  html += "<div class=\"container-main\">";
+  html += "<h1>🐱 ESP8266 Watering System 🐱</h1>";
   html += "<p id=\"wateringCycles\">Watering cycles completed: " + wateringCycles + "</p>";
   html += "<p id=\"nextWatering\">Next watering in: " + nextWatering + "</p>";
   html += "<p id=\"lastWatering\">Last watering was: " + lastWatering + "</p>";
   html += "</div>";
-  html += "<div class=\"container\">";
-  html += "<h1> Infos </h1>";
+  html += "<div class=\"container-info\">";
+  html += "<h1>System Info</h1>";
   html += "<p id=\"pinSolenoidValveNC\">Pin valve NC: " + LED_PIN + "</p>";
-  html += "<p id=\"modeWatering\">Watering mode: " + MICRO_DELAY/1000 + "s open / " + MICRO_DELAY/1000 + "s close, with " + MICRO_REPEAT + " repetition for each watering cycle.</p>";
-  html += "<p id=\"wateringDelay\">Delay between each watering: " + WATERING_DELAY/3600000 + "h </p>";
-  html += "<p id=\"saveDelay\">Save status to flash delay: " + SAVE_TIME_DELAY/60000 + "min </p>";
-#ifdef RESET_FLASH
-  html += "<p id=\"resetFlash\">Reset when reboot: on </p>";
-#endif
-#ifndef RESET_FLASH
-  html += "<p id=\"resetFlash\">Reset when reboot: off </p>";
-#endif
-#ifdef SERIAL_DEBUG
-  html += "<p id=\"serialDebug\">Serial debug: on </p>";
-#endif
-#ifndef SERIAL_DEBUG
-  html += "<p id=\"serialDebug\">Serial debug: off </p>";
-#endif
+  html += "<p id=\"modeWatering\">Watering mode: " + MICRO_DELAY / 1000 + "s open / " + MICRO_DELAY / 1000 + "s close, with " + MICRO_REPEAT + " repetition(s) per cycle.</p>";
+  html += "<p id=\"wateringDelay\">Delay between each watering: " + WATERING_DELAY / 3600000 + "h</p>";
+  html += "<p id=\"saveDelay\">Save status to flash delay: " + SAVE_TIME_DELAY / 60000 + "min</p>";
+  #ifdef RESET_FLASH
+  html += "<p id=\"resetFlash\">Reset when reboot: on</p>";
+  #else
+  html += "<p id=\"resetFlash\">Reset when reboot: off</p>";
+  #endif
+  #ifdef SERIAL_DEBUG
+  html += "<p id=\"serialDebug\">Serial debug: on</p>";
+  #else
+  html += "<p id=\"serialDebug\">Serial debug: off</p>";
+  #endif
   html += "</div>";
   html += "<footer>ESP8266 Watering System | Created with ❤️</footer>";
   html += "</body></html>";

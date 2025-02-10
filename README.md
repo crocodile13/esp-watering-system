@@ -2,7 +2,7 @@
 
 Resilient and minimalist automatic plant watering system using ESP32/ESP8266, with remote monitoring via a web interface.
 
-![Watering System](web_interface_image.png)
+![Watering System](web_interface_image-v2.png)
 
 ## Features
 
